@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Tonnie Roofing</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #333333;
+            overflow: hidden;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Dark Theme - Improved visibility */
+        body.dark-theme {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .profile-card,
+        body.dark-theme .info-card,
+        body.dark-theme .timeline-item,
+        body.dark-theme .testimonial-card {
+            background: #1e1e1e;
+            border-color: #333;
+        }
+        
+        body.dark-theme h1, 
+        body.dark-theme h2, 
+        body.dark-theme h3,
+        body.dark-theme h4 {
+            color: #ffffff;
+        }
+        
+        body.dark-theme p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .section-title p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .info-label {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .info-value {
+            color: #e0e0e0;
+        }
+        
+        /* No scrollbar */
+        body, html {
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .main-content {
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .main-content::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Header */
+        header {
+            height: 80px;
+            padding: 0 2rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+        
+        body.dark-theme header {
+            background: #1a1a1a;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d97706;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        
+        body.dark-theme .logo span {
+            color: #b0b0b0;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 101;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+        
+        body.dark-theme .hamburger span {
+            background: #e0e0e0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        body.dark-theme .nav-menu a {
+            color: #e0e0e0;
+        }
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #d97706;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        /* Tablet and Smartphone Styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                padding: 3rem 2rem;
+                transition: left 0.3s ease;
+                z-index: 99;
+                overflow-y: auto;
+            }
+            
+            body.dark-theme .nav-menu {
+                background: #1a1a1a;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .nav-menu a {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/uploads/profile-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* CEO Section */
+        .ceo-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .ceo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+        
+        body.dark-theme .ceo-card {
+            background: #1e1e1e;
+        }
+        
+        .ceo-image {
+            height: 450px;
+            overflow: hidden;
+        }
+        
+        .ceo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .ceo-card:hover .ceo-image img {
+            transform: scale(1.05);
+        }
+        
+        .ceo-details {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .ceo-label {
+            color: #d97706;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .ceo-name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        body.dark-theme .ceo-name {
+            color: #ffffff;
+        }
+        
+        .ceo-title {
+            font-size: 1.2rem;
+            color: #d97706;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .ceo-bio {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        body.dark-theme .ceo-bio {
+            color: #b0b0b0;
+        }
+        
+        .ceo-signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2rem;
+            color: #d97706;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #d97706 0%, #b45f06 100%);
+            padding: 4rem 2rem;
+            color: white;
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Company Info Grid */
+        .company-info-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+        
+        body.dark-theme .info-card {
+            background: #1e1e1e;
+        }
+        
+        .info-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        body.dark-theme .info-title {
+            color: #ffffff;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: #d97706;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.2rem;
+        }
+        
+        .info-value {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-theme .info-value {
+            color: #e0e0e0;
+        }
+        
+        .info-sub {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+        
+        body.dark-theme .info-sub {
+            color: #b0b0b0;
+        }
+        
+        /* Working Hours Note */
+        .working-note {
+            background: rgba(217, 119, 6, 0.1);
+            border-left: 4px solid #d97706;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+        
+        .working-note p {
+            color: #666;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        body.dark-theme .working-note p {
+            color: #b0b0b0;
+        }
+        
+        /* Services List */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .service-tag {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-theme .service-tag {
+            background: #2d2d2d;
+        }
+        
+        .service-tag i {
+            font-size: 1.5rem;
+        }
+        
+        .service-tag span {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        body.dark-theme .service-tag span {
+            color: #e0e0e0;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        body.dark-theme .section-title h2 {
+            color: #ffffff;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-theme .section-title p {
+            color: #b0b0b0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #d97706;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d97706;
+            border: 4px solid white;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        body.dark-theme .timeline-dot {
+            border-color: #1e1e1e;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        body.dark-theme .timeline-content {
+            background: #1e1e1e;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 40px);
+        }
+        
+        .timeline-year {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: #d97706;
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        body.dark-theme .timeline-title {
+            color: #ffffff;
+        }
+        
+        .timeline-text {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        body.dark-theme .timeline-text {
+            color: #b0b0b0;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+        
+        body.dark-theme .testimonials-section {
+            background: #1e1e1e;
+        }
+        
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-theme .testimonial-card {
+            background: #2d2d2d;
+        }
+        
+        .testimonial-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        
+        body.dark-theme .testimonial-text {
+            color: #b0b0b0;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #d97706;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            color: #333;
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-theme .author-info h4 {
+            color: #ffffff;
+        }
+        
+        .author-info p {
+            color: #999;
+            font-size: 0.85rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: #d97706;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #d97706;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn-outline-light:hover {
+            background: white;
+            color: #d97706;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #d97706;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #b0b0b0;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ceo-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .ceo-image {
+                height: 350px;
+            }
+            
+            .ceo-details {
+                padding: 2rem;
+            }
+            
+            .ceo-name {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .company-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                left: 80px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/static/uploads/tonnie-logo.png" alt="Tonnie Roofing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <a href="/" style="display: none;">TONNIE<span>Roofing</span></a>
+        </div>
+        
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/profile" class="active">Company</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+        </nav>
+    </header>
+    
+    <div class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1>About Tonnie Roofing</h1>
+            <p>Building trust through quality craftsmanship since 2015</p>
+        </section>
+        
+        <!-- CEO Section -->
+        <section class="ceo-section">
+            <div class="ceo-card">
+                <div class="ceo-image">
+                    <img src="/static/uploads/profile/ceo.jpg" alt="John Tonnie - CEO">
+                </div>
+                <div class="ceo-details">
+                    <div class="ceo-label">Founder & CEO</div>
+                    <h1 class="ceo-name">John Tonnie</h1>
+                    <div class="ceo-title">Visionary Leader in Construction</div>
+                    <p class="ceo-bio">
+                        With over 20 years of experience in the construction industry, John Tonnie founded 
+                        Tonnie Roofing in 2015 with a vision to provide quality roofing and interior design 
+                        services to Kenyan homeowners and businesses. His hands-on approach and commitment 
+                        to excellence has built a company known for reliability, quality craftsmanship, and 
+                        customer satisfaction.
+                    </p>
+                    <p class="ceo-bio">
+                        "I believe that every project, big or small, deserves the same level of attention 
+                        and quality. Our team doesn't just build roofs; we build relationships and trust 
+                        with our clients that last for generations."
+                    </p>
+                    <div class="ceo-signature">John Tonnie</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">🏗️</div>
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">👷</div>
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Skilled Workers</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Company Info Grid -->
+        <div class="company-info-grid">
+            <!-- Company Details -->
+            <div class="info-card">
+                <h2 class="info-title">🏢 Company Details</h2>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <div class="info-icon">🏷️</div>
+                        <div class="info-content">
+                            <div class="info-label">Company Name</div>
+                            <div class="info-value">Tonnie Roofing Limited</div>
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <div class="info-icon">📅</div>
+                        <div class="info-content">
+                            <div class="info-label">Active Since</div>
+                            <div class="info-value">March 15, 2015</div>
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <div class="info-label">Headquarters</div>
+                            <div class="info-value">Nairobi, Kenya</div>
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <div class="info-label">Phone</div>
+                            <div class="info-value">+254 700 000 000</div>
+                            <div class="info-sub">Emergency: +254 722 222 222</div>
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <div class="info-label">Email</div>
+                            <div class="info-value">info@tonnieroofing.co.ke</div>
+                            <div class="info-sub">sales@tonnieroofing.co.ke</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Business Hours & Services -->
+            <div class="info-card">
+                <h2 class="info-title">⏰ Business Hours</h2>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <div class="info-icon">📆</div>
+                        <div class="info-content">
+                            <div class="info-label">Monday - Friday</div>
+                            <div class="info-value">8:00 AM - 6:00 PM</div>
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <div class="info-icon">📆</div>
+                        <div class="info-content">
+                            <div class="info-label">Saturday</div>
+                            <div class="info-value">9:00 AM - 3:00 PM</div>
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <div class="info-icon">📆</div>
+                        <div class="info-content">
+                            <div class="info-label">Sunday</div>
+                            <div class="info-value">Closed</div>
+                        </div>
+                    </li>
+                    
+                    <!-- Working Days Note -->
+                    <div class="working-note">
+                        <p>
+                            <span>🔧</span>
+                            <strong>Repairs & Consultations:</strong> Available on working days only (Monday to Friday, 8:00 AM - 6:00 PM)
+                        </p>
+                    </div>
+                    
+                    <li class="info-item">
+                        <div class="info-icon">🚨</div>
+                        <div class="info-content">
+                            <div class="info-label">Emergency</div>
+                            <div class="info-value">+254 722 222 222</div>
+                            <div class="info-sub">24/7 for urgent roofing issues</div>
+                        </div>
+                    </li>
+                </ul>
+                
+                <h2 class="info-title" style="margin-top: 2rem;">🛠️ Our Services</h2>
+                <div class="services-list">
+                    <div class="service-tag">
+                        <i>🏠</i>
+                        <span>Roofing</span>
+                    </div>
+                    <div class="service-tag">
+                        <i>✨</i>
+                        <span>Interior Design</span>
+                    </div>
+                    <div class="service-tag">
+                        <i>🔧</i>
+                        <span>Repairs</span>
+                    </div>
+                    <div class="service-tag">
+                        <i>📋</i>
+                        <span>Quoting Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <div class="section-title">
+                <h2>Our Journey</h2>
+                <p>8 years of growth and excellence</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2015</span>
+                        <h3 class="timeline-title">Company Founded</h3>
+                        <p class="timeline-text">Tonnie Roofing was established in Nairobi with a vision to provide quality roofing services to Kenyan homeowners.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2017</span>
+                        <h3 class="timeline-title">Expansion to Interior Design</h3>
+                        <p class="timeline-text">Added interior design services including gypsum installations and custom fittings to meet growing client demands.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2019</span>
+                        <h3 class="timeline-title">100th Project Completed</h3>
+                        <p class="timeline-text">Celebrated a major milestone with our 100th successful project across Nairobi and surrounding counties.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2021</span>
+                        <h3 class="timeline-title">Introduction of Mabati Options</h3>
+                        <p class="timeline-text">Expanded roofing materials to include all major Kenyan mabati profiles including Dumu zas, Versatile, and Box Profile.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2023</span>
+                        <h3 class="timeline-title">Expanded to 47 Counties</h3>
+                        <p class="timeline-text">Extended our services to cover all 47 counties across Kenya, bringing quality roofing to every corner of the nation.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2026</span>
+                        <h3 class="timeline-title">250+ Projects & Growing</h3>
+                        <p class="timeline-text">Continuing to serve our clients with dedication, quality, and professionalism across Kenya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Trusted by homeowners and businesses across Kenya</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Tonnie Roofing did an amazing job on our home. The team was professional, finished on time, and used quality Dumu zas sheets. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div class="author-info">
+                            <h4>James Mwangi</h4>
+                            <p>Nairobi, Kilimani</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"We hired them for our office interior design. The gypsum ceiling and partitions are beautiful. Very happy with the service and attention to detail."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AW</div>
+                        <div class="author-info">
+                            <h4>Alice Wanjiku</h4>
+                            <p>Kiambu, Thika</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Emergency roof repair during working hours - they responded immediately and fixed the leak. Professional and reliable service."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PK</div>
+                        <div class="author-info">
+                            <h4>Peter Kariuki</h4>
+                            <p>Machakos, Town</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Work With Us</h2>
+                <p>Let's bring your vision to life with quality craftsmanship and professional service.</p>
+                <div class="cta-buttons">
+                    <a href="/contact" class="btn btn-primary">Contact Us Today</a>
+                    <a href="/projects" class="btn btn-outline-light">View Our Work</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TONNIE Roofing</h3>
+                    <p>Professional roofing, interior design, and repair services. Quality craftsmanship you can trust since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="#" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="#" target="_blank" aria-label="Twitter">🐦</a>
+                        <a href="#" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="/">Home</a>
+                    <a href="/services">Services</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/profile">About Us</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <a href="/services#roofing">Roofing</a>
+                    <a href="/services#interior">Interior Design</a>
+                    <a href="/services#repairs">Repairs</a>
+                    <a href="/services#quoting">Quoting Service</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📞 +254 700 000 000</p>
+                    <p>✉️ info@tonnieroofing.co.ke</p>
+                    <p>📍 Nairobi, Kenya</p>
+                    <p>⏰ Mon-Fri: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tonnie Roofing. All rights reserved. | Professional Services in Kenya</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Hamburger menu toggle
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.getElementById('navMenu');
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+        
+        // Theme toggle
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-theme')) {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const navMenu = document.getElementById('navMenu');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (navMenu && hamburger && !navMenu.contains(event.target) && !hamburger.contains(event.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

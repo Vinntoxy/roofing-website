@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Services - Tonnie Roofing Admin</title>
+    <style>
+        /* Complete CSS for Admin Services Page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        /* Dark Theme for Admin */
+        body.dark-theme {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .sidebar {
+            background: #1e1e1e;
+        }
+        
+        body.dark-theme .top-bar,
+        body.dark-theme .service-card,
+        body.dark-theme .add-service-card,
+        body.dark-theme .modal-content {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+        
+        body.dark-theme .nav-item {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .nav-item:hover,
+        body.dark-theme .nav-item.active {
+            background: #2d2d2d;
+            color: #d97706;
+        }
+        
+        body.dark-theme .page-title h1,
+        body.dark-theme .page-title p,
+        body.dark-theme .service-name,
+        body.dark-theme .stat-label {
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .service-description {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .stat-value {
+            color: #d97706;
+        }
+        
+        body.dark-theme .service-slug {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .action-btn {
+            background: #3d3d3d;
+            border-color: #555;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .action-btn:hover {
+            background: #d97706;
+            color: white;
+        }
+        
+        body.dark-theme .action-btn.delete:hover {
+            background: #dc3545;
+        }
+        
+        body.dark-theme .form-control {
+            background: #3d3d3d;
+            border-color: #555;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .form-control:focus {
+            border-color: #d97706;
+        }
+        
+        body.dark-theme .features-list li {
+            color: #b0b0b0;
+        }
+        
+        /* No scrollbar */
+        body, html {
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .main-content {
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .main-content::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Admin Layout */
+        .admin-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: #1a202c;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            width: 280px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            z-index: 100;
+        }
+        
+        .sidebar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid #2d3748;
+        }
+        
+        .sidebar-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .sidebar-header .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .sidebar-header .logo span {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d97706;
+        }
+        
+        .sidebar-header .logo small {
+            color: #a0aec0;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 0.2rem;
+        }
+        
+        .nav-menu {
+            padding: 1.5rem 0;
+        }
+        
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-section-title {
+            padding: 0 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a0aec0;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+            min-height: 48px;
+        }
+        
+        .nav-item:hover {
+            background: #2d3748;
+            color: white;
+        }
+        
+        .nav-item.active {
+            background: #2d3748;
+            color: #d97706;
+            border-left-color: #d97706;
+        }
+        
+        .nav-item i {
+            width: 24px;
+            font-size: 1.2rem;
+        }
+        
+        .badge {
+            margin-left: auto;
+            background: #d97706;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+        }
+        
+        /* Main Area */
+        .main-area {
+            margin-left: 280px;
+            padding: 2rem;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h1 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .page-title p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            background: #f0f0f0;
+        }
+        
+        .admin-avatar {
+            width: 44px;
+            height: 44px;
+            background: #d97706;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            position: relative;
+            border-left: 4px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-card.roofing {
+            border-left-color: #0066cc;
+        }
+        
+        .service-card.interior {
+            border-left-color: #7b1fa2;
+        }
+        
+        .service-card.repairs {
+            border-left-color: #c62828;
+        }
+        
+        .service-card.quoting {
+            border-left-color: #ef6c00;
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .service-status {
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .service-status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .service-status.inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .service-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+        
+        .service-slug {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            color: #d97706;
+            font-weight: bold;
+        }
+        
+        .service-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            color: #d97706;
+            font-size: 1.2rem;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+        }
+        
+        .service-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            min-height: 40px;
+        }
+        
+        .action-btn:hover {
+            background: #d97706;
+            color: white;
+            border-color: #d97706;
+        }
+        
+        .action-btn.delete:hover {
+            background: #dc3545;
+            border-color: #dc3545;
+        }
+        
+        /* Add Service Card */
+        .add-service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 2px dashed #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 300px;
+        }
+        
+        .add-service-card:hover {
+            border-color: #d97706;
+            background: #fff9f0;
+        }
+        
+        .add-icon {
+            width: 70px;
+            height: 70px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #d97706;
+        }
+        
+        .add-service-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .add-service-card p {
+            color: #666;
+            text-align: center;
+            max-width: 200px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h3 {
+            color: #333;
+            font-size: 1.3rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #999;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #d97706;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        /* Features */
+        .features-container {
+            margin-bottom: 1rem;
+        }
+        
+        .feature-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-row input {
+            flex: 1;
+        }
+        
+        .remove-feature {
+            width: 40px;
+            height: 40px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .remove-feature:hover {
+            background: #c82333;
+        }
+        
+        .add-feature {
+            background: #f8f9fa;
+            border: 1px dashed #ddd;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            min-height: 48px;
+        }
+        
+        .add-feature:hover {
+            border-color: #d97706;
+            color: #d97706;
+        }
+        
+        /* Image Upload */
+        .image-upload-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .image-upload-box {
+            flex: 1;
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .image-upload-box:hover {
+            border-color: #d97706;
+        }
+        
+        .image-upload-box img {
+            max-width: 100%;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+        
+        .image-upload-box span {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Toggle Switch */
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .toggle {
+            width: 50px;
+            height: 26px;
+            background: #ddd;
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .toggle.active {
+            background: #4caf50;
+        }
+        
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+        
+        .toggle.active::after {
+            transform: translateX(24px);
+        }
+        
+        /* Modal Actions */
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            min-height: 48px;
+        }
+        
+        .modal-btn.cancel {
+            background: #f8f9fa;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+        
+        .modal-btn.cancel:hover {
+            background: #e9ecef;
+        }
+        
+        .modal-btn.confirm {
+            background: #d97706;
+            color: white;
+        }
+        
+        .modal-btn.confirm:hover {
+            background: #b45f06;
+        }
+        
+        .modal-btn.delete-confirm {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .modal-btn.delete-confirm:hover {
+            background: #c82333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .main-area {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-upload-row {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .service-stats {
+                flex-direction: column;
+            }
+            
+            .service-actions {
+                flex-wrap: wrap;
+            }
+            
+            .action-btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="/static/uploads/tonnie-logo.png" alt="Tonnie Roofing">
+                    <div>
+                        <span>TONNIE</span>
+                        <small>Admin Panel</small>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <a href="/admin/dashboard" class="nav-item">
+                        <i>📊</i> Dashboard
+                    </a>
+                    <a href="/admin/analytics" class="nav-item">
+                        <i>📈</i> Analytics
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Content</div>
+                    <a href="/admin/projects" class="nav-item">
+                        <i>🏗️</i> Projects
+                    </a>
+                    <a href="/admin/services" class="nav-item active">
+                        <i>🛠️</i> Services
+                    </a>
+                    <a href="/admin/inquiries" class="nav-item">
+                        <i>📨</i> Inquiries
+                        <span class="badge">8</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Settings</div>
+                    <a href="/admin/profile" class="nav-item">
+                        <i>👤</i> Profile
+                    </a>
+                    <a href="#" class="nav-item" onclick="logout()">
+                        <i>🚪</i> Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-area">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="page-title">
+                    <h1>Manage Services</h1>
+                    <p>Add, edit, or remove services offered by your company</p>
+                </div>
+                
+                <div class="admin-profile">
+                    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                    <div class="admin-avatar">JT</div>
+                </div>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="services-grid">
+                <!-- Roofing Service -->
+                <div class="service-card roofing" id="service-roofing" data-id="1">
+                    <div class="service-header">
+                        <div class="service-icon">🏠</div>
+                        <span class="service-status active">Active</span>
+                    </div>
+                    <h2 class="service-name">Roofing</h2>
+                    <div class="service-slug">Slug: roofing</div>
+                    <p class="service-description">
+                        Professional roof installation, repair, and maintenance for residential and commercial properties using quality Kenyan mabati.
+                    </p>
+                    
+                    <ul class="features-list">
+                        <li>New roof installation</li>
+                        <li>Roof replacement & renovation</li>
+                        <li>Leak repairs & maintenance</li>
+                        <li>Roof inspections & assessments</li>
+                        <li>Multiple mabati options</li>
+                    </ul>
+                    
+                    <div class="service-stats">
+                        <div class="stat">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Inquiries</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Images</div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="action-btn" onclick="editService('roofing')">
+                            <span>✏️</span> Edit
+                        </button>
+                        <button class="action-btn" onclick="toggleServiceStatus('roofing')">
+                            <span>🔄</span> Toggle
+                        </button>
+                        <button class="action-btn delete" onclick="deleteService('roofing')">
+                            <span>🗑️</span> Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Interior Design Service -->
+                <div class="service-card interior" id="service-interior" data-id="2">
+                    <div class="service-header">
+                        <div class="service-icon">✨</div>
+                        <span class="service-status active">Active</span>
+                    </div>
+                    <h2 class="service-name">Interior Design</h2>
+                    <div class="service-slug">Slug: interior</div>
+                    <p class="service-description">
+                        Transform your spaces with gypsum installations, custom fittings, and modern interior designs.
+                    </p>
+                    
+                    <ul class="features-list">
+                        <li>Gypsum ceiling installations</li>
+                        <li>Custom wall fittings & partitions</li>
+                        <li>Modern interior finishing</li>
+                        <li>Space planning & design</li>
+                        <li>Lighting design</li>
+                    </ul>
+                    
+                    <div class="service-stats">
+                        <div class="stat">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Inquiries</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Images</div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="action-btn" onclick="editService('interior')">
+                            <span>✏️</span> Edit
+                        </button>
+                        <button class="action-btn" onclick="toggleServiceStatus('interior')">
+                            <span>🔄</span> Toggle
+                        </button>
+                        <button class="action-btn delete" onclick="deleteService('interior')">
+                            <span>🗑️</span> Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Repairs Service -->
+                <div class="service-card repairs" id="service-repairs" data-id="3">
+                    <div class="service-header">
+                        <div class="service-icon">🔧</div>
+                        <span class="service-status active">Active</span>
+                    </div>
+                    <h2 class="service-name">Repairs</h2>
+                    <div class="service-slug">Slug: repairs</div>
+                    <p class="service-description">
+                        Quick response and reliable repair services for roofing, ceilings, and structural issues.
+                    </p>
+                    
+                    <ul class="features-list">
+                        <li>Roof leak repairs</li>
+                        <li>Ceiling & wall repairs</li>
+                        <li>Structural damage fixes</li>
+                        <li>Regular maintenance packages</li>
+                        <li>Working days only (Mon-Fri)</li>
+                    </ul>
+                    
+                    <div class="service-stats">
+                        <div class="stat">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">15</div>
+                            <div class="stat-label">Inquiries</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Images</div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="action-btn" onclick="editService('repairs')">
+                            <span>✏️</span> Edit
+                        </button>
+                        <button class="action-btn" onclick="toggleServiceStatus('repairs')">
+                            <span>🔄</span> Toggle
+                        </button>
+                        <button class="action-btn delete" onclick="deleteService('repairs')">
+                            <span>🗑️</span> Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quoting Service -->
+                <div class="service-card quoting" id="service-quoting" data-id="4">
+                    <div class="service-header">
+                        <div class="service-icon">📋</div>
+                        <span class="service-status active">Active</span>
+                    </div>
+                    <h2 class="service-name">Quoting Service</h2>
+                    <div class="service-slug">Slug: quoting</div>
+                    <p class="service-description">
+                        Detailed quotes for roofing and interior design projects with professional assessment.
+                    </p>
+                    
+                    <ul class="features-list">
+                        <li>Detailed project assessment</li>
+                        <li>Material quantity calculations</li>
+                        <li>Labor cost estimation</li>
+                        <li>Timeline projections</li>
+                        <li>Free consultation (working days)</li>
+                    </ul>
+                    
+                    <div class="service-stats">
+                        <div class="stat">
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">20</div>
+                            <div class="stat-label">Inquiries</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Images</div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="action-btn" onclick="editService('quoting')">
+                            <span>✏️</span> Edit
+                        </button>
+                        <button class="action-btn" onclick="toggleServiceStatus('quoting')">
+                            <span>🔄</span> Toggle
+                        </button>
+                        <button class="action-btn delete" onclick="deleteService('quoting')">
+                            <span>🗑️</span> Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Add New Service Card -->
+                <div class="add-service-card" onclick="showAddServiceModal()">
+                    <div class="add-icon">➕</div>
+                    <h3>Add New Service</h3>
+                    <p>Create a new service offering for your company</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Edit Service Modal -->
+    <div id="editServiceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Edit Service</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label class="form-label">Service Name</label>
+                    <input type="text" class="form-control" id="serviceName">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Service Slug</label>
+                    <input type="text" class="form-control" id="serviceSlug">
+                    <small style="color: #999;">URL-friendly name (e.g., roofing, interior-design)</small>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Icon (Emoji)</label>
+                        <input type="text" class="form-control" id="serviceIcon" placeholder="e.g., 🏠">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Border Color</label>
+                        <select class="form-control" id="serviceColor">
+                            <option value="#0066cc">Blue (Roofing)</option>
+                            <option value="#7b1fa2">Purple (Interior)</option>
+                            <option value="#c62828">Red (Repairs)</option>
+                            <option value="#ef6c00">Orange (Quoting)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Short Description</label>
+                    <textarea class="form-control" id="shortDescription" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Full Description</label>
+                    <textarea class="form-control" id="fullDescription" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Features</label>
+                    <div id="featuresContainer" class="features-container">
+                        <!-- Features will be added here -->
+                    </div>
+                    <button type="button" class="add-feature" onclick="addFeature()">
+                        <span>➕</span> Add Feature
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Service Images</label>
+                    <div class="image-upload-row">
+                        <div class="image-upload-box" onclick="uploadCardImage()">
+                            <img src="/static/uploads/thumbnails/default-service.jpg" alt="Card Image" id="cardImagePreview">
+                            <span>Card Image</span>
+                            <input type="file" id="cardImageUpload" style="display: none;" accept="image/*" onchange="previewCardImage(this)">
+                        </div>
+                        <div class="image-upload-box" onclick="uploadDetailImage()">
+                            <img src="/static/uploads/thumbnails/default-service.jpg" alt="Detail Image" id="detailImagePreview">
+                            <span>Detail Image</span>
+                            <input type="file" id="detailImageUpload" style="display: none;" accept="image/*" onchange="previewDetailImage(this)">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <div class="toggle-switch">
+                        <div class="toggle active" id="statusToggle" onclick="toggleModalStatus(this)"></div>
+                        <span id="statusText">Active</span>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="modal-actions">
+                <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+                <button class="modal-btn confirm" onclick="saveService()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Service</h3>
+                <button class="close-btn" onclick="closeDeleteModal()">&times;</button>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <p style="color: #666; line-height: 1.6;">Are you sure you want to delete this service?</p>
+                <p style="color: #dc3545; font-size: 0.9rem; margin-top: 0.5rem;">This action cannot be undone and will affect all associated projects.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn cancel" onclick="closeDeleteModal()">Cancel</button>
+                <button class="modal-btn delete-confirm" onclick="confirmDelete()">Delete Service</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentService = null;
+        let serviceStatus = true;
+        let features = [];
+        
+        // Check authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminSession = localStorage.getItem('adminSession');
+            if (!adminSession) {
+                window.location.href = '/admin/login?error=unauthorized';
+                return;
+            }
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('adminTheme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        });
+        
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('adminTheme', isDark ? 'dark' : 'light');
+        }
+        
+        // Edit service
+        function editService(service) {
+            currentService = service;
+            document.getElementById('modalTitle').textContent = 'Edit Service';
+            
+            // Load service data
+            if (service === 'roofing') {
+                document.getElementById('serviceName').value = 'Roofing';
+                document.getElementById('serviceSlug').value = 'roofing';
+                document.getElementById('serviceIcon').value = '🏠';
+                document.getElementById('serviceColor').value = '#0066cc';
+                document.getElementById('shortDescription').value = 'Professional roof installation and maintenance';
+                document.getElementById('fullDescription').value = 'Complete roofing solutions for residential and commercial properties using quality Kenyan mabati.';
+                
+                features = [
+                    'New roof installation',
+                    'Roof replacement & renovation',
+                    'Leak repairs & maintenance',
+                    'Roof inspections & assessments',
+                    'Multiple mabati options'
+                ];
+                loadFeatures(features);
+            } else if (service === 'interior') {
+                document.getElementById('serviceName').value = 'Interior Design';
+                document.getElementById('serviceSlug').value = 'interior';
+                document.getElementById('serviceIcon').value = '✨';
+                document.getElementById('serviceColor').value = '#7b1fa2';
+                document.getElementById('shortDescription').value = 'Modern interior design solutions';
+                document.getElementById('fullDescription').value = 'Transform your spaces with gypsum installations, custom fittings, and modern interior designs.';
+                
+                features = [
+                    'Gypsum ceiling installations',
+                    'Custom wall fittings & partitions',
+                    'Modern interior finishing',
+                    'Space planning & design',
+                    'Lighting design'
+                ];
+                loadFeatures(features);
+            } else if (service === 'repairs') {
+                document.getElementById('serviceName').value = 'Repairs';
+                document.getElementById('serviceSlug').value = 'repairs';
+                document.getElementById('serviceIcon').value = '🔧';
+                document.getElementById('serviceColor').value = '#c62828';
+                document.getElementById('shortDescription').value = 'Professional repair services';
+                document.getElementById('fullDescription').value = 'Quick response and reliable repair services for roofing, ceilings, and structural issues.';
+                
+                features = [
+                    'Roof leak repairs',
+                    'Ceiling & wall repairs',
+                    'Structural damage fixes',
+                    'Regular maintenance packages',
+                    'Working days only (Mon-Fri)'
+                ];
+                loadFeatures(features);
+            } else if (service === 'quoting') {
+                document.getElementById('serviceName').value = 'Quoting Service';
+                document.getElementById('serviceSlug').value = 'quoting';
+                document.getElementById('serviceIcon').value = '📋';
+                document.getElementById('serviceColor').value = '#ef6c00';
+                document.getElementById('shortDescription').value = 'Detailed project quotes';
+                document.getElementById('fullDescription').value = 'Detailed quotes for roofing and interior design projects with professional assessment.';
+                
+                features = [
+                    'Detailed project assessment',
+                    'Material quantity calculations',
+                    'Labor cost estimation',
+                    'Timeline projections',
+                    'Free consultation (working days)'
+                ];
+                loadFeatures(features);
+            }
+            
+            showModal();
+        }
+        
+        // Load features into form
+        function loadFeatures(featureList) {
+            const container = document.getElementById('featuresContainer');
+            container.innerHTML = '';
+            
+            featureList.forEach(feature => {
+                const row = document.createElement('div');
+                row.className = 'feature-row';
+                row.innerHTML = `
+                    <input type="text" class="form-control" value="${feature}" placeholder="Feature">
+                    <button type="button" class="remove-feature" onclick="removeFeature(this)">✖</button>
+                `;
+                container.appendChild(row);
+            });
+        }
+        
+        // Add feature row
+        function addFeature() {
+            const container = document.getElementById('featuresContainer');
+            const row = document.createElement('div');
+            row.className = 'feature-row';
+            row.innerHTML = `
+                <input type="text" class="form-control" value="" placeholder="New feature">
+                <button type="button" class="remove-feature" onclick="removeFeature(this)">✖</button>
+            `;
+            container.appendChild(row);
+        }
+        
+        // Remove feature row
+        function removeFeature(button) {
+            if (document.querySelectorAll('.feature-row').length > 1) {
+                button.closest('.feature-row').remove();
+            } else {
+                alert('At least one feature is required');
+            }
+        }
+        
+        // Toggle service status in modal
+        function toggleModalStatus(element) {
+            element.classList.toggle('active');
+            serviceStatus = !serviceStatus;
+            document.getElementById('statusText').textContent = serviceStatus ? 'Active' : 'Inactive';
+        }
+        
+        // Toggle service status from card
+        function toggleServiceStatus(service) {
+            const card = document.getElementById(`service-${service}`);
+            const statusBadge = card.querySelector('.service-status');
+            const actionBtn = card.querySelector('.action-btn:nth-child(2)');
+            
+            if (statusBadge.classList.contains('active')) {
+                statusBadge.classList.remove('active');
+                statusBadge.classList.add('inactive');
+                statusBadge.textContent = 'Inactive';
+            } else {
+                statusBadge.classList.remove('inactive');
+                statusBadge.classList.add('active');
+                statusBadge.textContent = 'Active';
+            }
+            
+            console.log(`Toggled ${service} status`);
+        }
+        
+        // Show add service modal
+        function showAddServiceModal() {
+            currentService = null;
+            document.getElementById('modalTitle').textContent = 'Add New Service';
+            document.getElementById('serviceName').value = '';
+            document.getElementById('serviceSlug').value = '';
+            document.getElementById('serviceIcon').value = '';
+            document.getElementById('serviceColor').value = '#0066cc';
+            document.getElementById('shortDescription').value = '';
+            document.getElementById('fullDescription').value = '';
+            document.getElementById('featuresContainer').innerHTML = '';
+            document.getElementById('statusToggle').classList.add('active');
+            document.getElementById('statusText').textContent = 'Active';
+            serviceStatus = true;
+            
+            // Add one empty feature row
+            addFeature();
+            
+            // Reset image previews
+            document.getElementById('cardImagePreview').src = '/static/uploads/thumbnails/default-service.jpg';
+            document.getElementById('detailImagePreview').src = '/static/uploads/thumbnails/default-service.jpg';
+            
+            showModal();
+        }
+        
+        // Show modal
+        function showModal() {
+            document.getElementById('editServiceModal').classList.add('show');
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('editServiceModal').classList.remove('show');
+        }
+        
+        // Save service
+        function saveService() {
+            const serviceData = {
+                name: document.getElementById('serviceName').value,
+                slug: document.getElementById('serviceSlug').value,
+                icon: document.getElementById('serviceIcon').value,
+                color: document.getElementById('serviceColor').value,
+                shortDescription: document.getElementById('shortDescription').value,
+                fullDescription: document.getElementById('fullDescription').value,
+                status: serviceStatus ? 'active' : 'inactive',
+                features: []
+            };
+            
+            // Collect features
+            document.querySelectorAll('#featuresContainer .feature-row input').forEach(input => {
+                if (input.value.trim()) {
+                    serviceData.features.push(input.value.trim());
+                }
+            });
+            
+            if (!serviceData.name || !serviceData.slug) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (serviceData.features.length === 0) {
+                alert('Please add at least one feature');
+                return;
+            }
+            
+            console.log('Saving service:', serviceData);
+            
+            // Update card if editing existing
+            if (currentService) {
+                const card = document.getElementById(`service-${currentService}`);
+                if (card) {
+                    card.querySelector('.service-name').textContent = serviceData.name;
+                    card.querySelector('.service-description').textContent = serviceData.shortDescription;
+                    
+                    const featuresList = card.querySelector('.features-list');
+                    featuresList.innerHTML = '';
+                    serviceData.features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        featuresList.appendChild(li);
+                    });
+                }
+            }
+            
+            alert('Service saved successfully!');
+            closeModal();
+        }
+        
+        // Delete service
+        function deleteService(service) {
+            currentService = service;
+            document.getElementById('deleteModal').classList.add('show');
+        }
+        
+        // Close delete modal
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.remove('show');
+            currentService = null;
+        }
+        
+        // Confirm delete
+        function confirmDelete() {
+            if (currentService) {
+                const card = document.getElementById(`service-${currentService}`);
+                if (card) {
+                    card.remove();
+                }
+                console.log(`Deleted service: ${currentService}`);
+                alert('Service deleted successfully');
+            }
+            closeDeleteModal();
+        }
+        
+        // Image upload functions
+        function uploadCardImage() {
+            document.getElementById('cardImageUpload').click();
+        }
+        
+        function uploadDetailImage() {
+            document.getElementById('detailImageUpload').click();
+        }
+        
+        function previewCardImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('cardImagePreview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function previewDetailImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('detailImagePreview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('adminSession');
+                localStorage.removeItem('rememberedUsername');
+                localStorage.removeItem('adminTheme');
+                window.location.href = '/admin/login';
+            }
+        }
+    </script>
+</body>
+</html>
