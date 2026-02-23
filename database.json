@@ -1,0 +1,879 @@
+{
+  "admins": [],
+  "profile": {
+    "company_name": "Tonnie Roofing",
+    "company_logo": "/static/uploads/profile/logo.png",
+    "hero_image": "/static/uploads/thumbnails/hero.jpg",
+    "tagline": "Professional Roofing & Interior Design Services",
+    "description": "Your trusted partner in quality construction since 2015. We provide professional roofing, interior design, and repair services across Kenya.",
+    "ceo": {
+      "name": "John Tonnie",
+      "photo": "/static/uploads/profile/ceo.jpg",
+      "title": "Founder & CEO",
+      "bio": "With over 20 years of experience in the construction industry, John Tonnie founded Tonnie Roofing in 2015 with a vision to provide quality roofing and interior design services to Kenyan homeowners and businesses. His hands-on approach and commitment to excellence has built a company known for reliability, quality craftsmanship, and customer satisfaction."
+    },
+    "active_since": "2015",
+    "contact": {
+      "phone": "+254 700 000 000",
+      "phone2": "+254 711 111 111",
+      "emergency": "+254 722 222 222",
+      "email": "info@tonnieroofing.co.ke",
+      "email2": "sales@tonnieroofing.co.ke",
+      "quotes": "quotes@tonnieroofing.co.ke",
+      "support": "support@tonnieroofing.co.ke"
+    },
+    "social": [
+      {
+        "platform": "Facebook",
+        "icon": "📘",
+        "url": "https://facebook.com/tonnieroofing",
+        "active": true
+      },
+      {
+        "platform": "Instagram",
+        "icon": "📷",
+        "url": "https://instagram.com/tonnieroofing",
+        "active": true
+      },
+      {
+        "platform": "Twitter",
+        "icon": "🐦",
+        "url": "https://twitter.com/tonnieroofing",
+        "active": true
+      },
+      {
+        "platform": "WhatsApp",
+        "icon": "💬",
+        "url": "https://wa.me/254700000000",
+        "active": true
+      },
+      {
+        "platform": "YouTube",
+        "icon": "▶️",
+        "url": "https://youtube.com/@tonnieroofing",
+        "active": false
+      },
+      {
+        "platform": "LinkedIn",
+        "icon": "🔗",
+        "url": "https://linkedin.com/company/tonnieroofing",
+        "active": false
+      }
+    ],
+    "address": {
+      "street": "Kilimani Business Centre",
+      "city": "Nairobi",
+      "county": "Nairobi",
+      "country": "Kenya",
+      "po_box": "PO Box 12345-00100",
+      "landmark": "Near Kilimani Mall"
+    },
+    "hours": {
+      "weekdays": "8:00 AM - 6:00 PM",
+      "saturday": "9:00 AM - 3:00 PM",
+      "sunday": "Closed",
+      "emergency": "24/7",
+      "repairs": "Monday to Friday, 8:00 AM - 6:00 PM",
+      "consultation": "Monday to Friday, 8:00 AM - 6:00 PM"
+    },
+    "stats": {
+      "projects_completed": 250,
+      "happy_clients": 150,
+      "years_experience": 8,
+      "skilled_workers": 25,
+      "counties_served": 47
+    }
+  },
+  "services": [
+    {
+      "id": "serv_001",
+      "name": "Roofing",
+      "slug": "roofing",
+      "icon": "🏠",
+      "image": "/static/uploads/thumbnails/roofing.jpg",
+      "detail_image": "/static/uploads/thumbnails/roofing-detail.jpg",
+      "short_description": "Professional roof installation and maintenance",
+      "full_description": "Complete roofing solutions for residential and commercial properties using quality Kenyan mabati. We offer a wide range of profiles including Dumu zas, Versatile, Box Profile, Roman Tiles, and Corrugated GCI sheets. Our team ensures proper installation, waterproofing, and ventilation for long-lasting results.",
+      "features": [
+        "New roof installation",
+        "Roof replacement & renovation",
+        "Leak repairs & maintenance",
+        "Roof inspections & assessments",
+        "Gutter and flashing installation",
+        "Multiple mabati options"
+      ],
+      "active": true,
+      "project_count": 24,
+      "inquiry_count": 12,
+      "image_count": 3,
+      "color": "#0066cc",
+      "order": 1
+    },
+    {
+      "id": "serv_002",
+      "name": "Interior Design",
+      "slug": "interior",
+      "icon": "✨",
+      "image": "/static/uploads/thumbnails/interior.jpg",
+      "detail_image": "/static/uploads/thumbnails/interior-detail.jpg",
+      "short_description": "Modern interior design solutions",
+      "full_description": "Transform your spaces with gypsum installations, custom fittings, and modern interior designs. We create beautiful and functional interiors for homes and offices. Our services include gypsum ceilings, wall partitions, custom fittings, and complete interior finishing.",
+      "features": [
+        "Gypsum ceiling installations",
+        "Custom wall fittings & partitions",
+        "Modern interior finishing",
+        "Space planning & design",
+        "Lighting design",
+        "Commercial & residential interiors"
+      ],
+      "active": true,
+      "project_count": 12,
+      "inquiry_count": 8,
+      "image_count": 2,
+      "color": "#7b1fa2",
+      "order": 2
+    },
+    {
+      "id": "serv_003",
+      "name": "Repairs",
+      "slug": "repairs",
+      "icon": "🔧",
+      "image": "/static/uploads/thumbnails/repairs.jpg",
+      "detail_image": "/static/uploads/thumbnails/repairs-detail.jpg",
+      "short_description": "Professional repair services",
+      "full_description": "Quick response and reliable repair services for roofing, ceilings, and structural issues. Our team handles emergency leaks, water damage, structural fixes, and regular maintenance. Available on working days only (Monday to Friday, 8:00 AM - 6:00 PM).",
+      "features": [
+        "Roof leak repairs",
+        "Ceiling & wall repairs",
+        "Structural damage fixes",
+        "Regular maintenance packages",
+        "Gutter cleaning & repair",
+        "Water damage restoration"
+      ],
+      "active": true,
+      "project_count": 8,
+      "inquiry_count": 15,
+      "image_count": 2,
+      "color": "#c62828",
+      "order": 3
+    },
+    {
+      "id": "serv_004",
+      "name": "Quoting Service",
+      "slug": "quoting",
+      "icon": "📋",
+      "image": "/static/uploads/thumbnails/quoting.jpg",
+      "detail_image": "/static/uploads/thumbnails/quoting-detail.jpg",
+      "short_description": "Detailed project quotes",
+      "full_description": "Get accurate, detailed quotes for your roofing and interior design projects. Our professional assessment ensures transparent pricing with no hidden costs. We provide material quantity calculations, labor cost estimation, and timeline projections.",
+      "features": [
+        "Detailed project assessment",
+        "Material quantity calculations",
+        "Labor cost estimation",
+        "Timeline projections",
+        "Multiple quote options",
+        "Free consultation (working days)"
+      ],
+      "active": true,
+      "project_count": 4,
+      "inquiry_count": 20,
+      "image_count": 1,
+      "color": "#ef6c00",
+      "order": 4
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj_001",
+      "service_id": "serv_001",
+      "service_name": "Roofing",
+      "service_slug": "roofing",
+      "title": "Modern Roof Installation",
+      "slug": "modern-roof-installation",
+      "featured": true,
+      "short_description": "Complete roof replacement with Dumu zas 28 gauge sheets",
+      "full_description": "Complete roof replacement for a modern residential home in Kilimani, Nairobi. The project involved removing the old roofing material and installing high-quality Dumu zas 28 gauge sheets. The new roof features improved insulation, better ventilation, and enhanced aesthetic appeal. Special attention was given to the roof's structural integrity, with reinforced trusses and upgraded waterproofing membrane. The Dumu zas sheets provide excellent durability and weather protection. The project was completed on schedule with minimal disruption to the homeowners.",
+      "location": {
+        "county": "Nairobi",
+        "area": "Kilimani",
+        "exact": "Argwings Kodhek Road",
+        "landmark": "Near Kilimani Mall"
+      },
+      "dates": {
+        "start": "2026-02-20",
+        "end": "2026-03-15"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/roofing1-1.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-1-thumb.jpg",
+          "description": "Completed roof installation with Dumu zas 28 gauge sheets",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-2.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-2-thumb.jpg",
+          "description": "Removal of old roofing material - Day 1",
+          "order": 2,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-3.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-3-thumb.jpg",
+          "description": "Structural reinforcement and new trusses installation",
+          "order": 3,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-4.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-4-thumb.jpg",
+          "description": "Waterproofing membrane application",
+          "order": 4,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-5.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-5-thumb.jpg",
+          "description": "Dumu zas sheet installation in progress",
+          "order": 5,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-6.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-6-thumb.jpg",
+          "description": "Ridge capping and finishing details",
+          "order": 6,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-7.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-7-thumb.jpg",
+          "description": "Completed roof - Front view showing modern design",
+          "order": 7,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing1-8.jpg",
+          "thumbnail": "/static/uploads/projects/roofing1-8-thumb.jpg",
+          "description": "Gutter installation and final touches",
+          "order": 8,
+          "featured": false
+        }
+      ],
+      "roof_type": "Pitched Roof",
+      "roofing_sheets": "Dumu Zas - 28 Gauge",
+      "advantage": "Durable, Weather-resistant, Aesthetic",
+      "warranty": "25 Years",
+      "materials": [
+        {"name": "Dumu Zas 28 Gauge", "quantity": "850 pcs"},
+        {"name": "Waterproofing Membrane", "quantity": "120 m²"},
+        {"name": "Timber Trusses", "quantity": "25 pcs"},
+        {"name": "Ridge Caps", "quantity": "40 pcs"},
+        {"name": "Galvanized Nails", "quantity": "5 kg"},
+        {"name": "Gutters", "quantity": "30 m"}
+      ],
+      "process": [
+        "Site inspection and measurements",
+        "Removal of old roofing material",
+        "Structural reinforcement",
+        "Waterproofing installation",
+        "Dumu zas sheet installation",
+        "Ridge capping and finishing",
+        "Final inspection and cleanup"
+      ],
+      "property_type": "residential",
+      "client_name": "Mr. & Mrs. Mwangi",
+      "project_value": "KES 450,000",
+      "tags": ["roofing", "residential", "modern", "dumu zas"],
+      "status": "completed",
+      "created_at": "2026-03-15T10:30:00Z",
+      "updated_at": "2026-03-15T16:45:00Z"
+    },
+    {
+      "id": "proj_002",
+      "service_id": "serv_001",
+      "service_name": "Roofing",
+      "service_slug": "roofing",
+      "title": "Commercial Complex Roofing",
+      "slug": "commercial-complex-roofing",
+      "featured": true,
+      "short_description": "Industrial Versatile profile installation for commercial complex",
+      "full_description": "Complete roofing installation for a large commercial complex in Thika, Kiambu. The project featured durable Versatile profile sheets with improved ventilation system. The installation covered over 2,000 square meters of commercial space including shops, offices, and common areas.",
+      "location": {
+        "county": "Kiambu",
+        "area": "Thika",
+        "exact": "Thika Road",
+        "landmark": "Near Thika Mall"
+      },
+      "dates": {
+        "start": "2026-02-01",
+        "end": "2026-02-28"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/roofing2-1.jpg",
+          "thumbnail": "/static/uploads/projects/roofing2-1-thumb.jpg",
+          "description": "Completed commercial complex roofing",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/roofing2-2.jpg",
+          "thumbnail": "/static/uploads/projects/roofing2-2-thumb.jpg",
+          "description": "Versatile profile installation in progress",
+          "order": 2,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing2-3.jpg",
+          "thumbnail": "/static/uploads/projects/roofing2-3-thumb.jpg",
+          "description": "Ventilation system installation",
+          "order": 3,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/roofing2-4.jpg",
+          "thumbnail": "/static/uploads/projects/roofing2-4-thumb.jpg",
+          "description": "Finished roof with gutters",
+          "order": 4,
+          "featured": false
+        }
+      ],
+      "roof_type": "Industrial",
+      "roofing_sheets": "Versatile - 28 Gauge",
+      "advantage": "Durable, Cost-effective, Quick installation",
+      "warranty": "20 Years",
+      "materials": [
+        {"name": "Versatile 28 Gauge", "quantity": "2,200 pcs"},
+        {"name": "Insulation Layer", "quantity": "2,000 m²"},
+        {"name": "Steel Trusses", "quantity": "45 pcs"},
+        {"name": "Industrial Gutters", "quantity": "150 m"}
+      ],
+      "property_type": "commercial",
+      "client_name": "Thika Business Complex Ltd",
+      "project_value": "KES 1,200,000",
+      "tags": ["roofing", "commercial", "versatile"],
+      "status": "completed",
+      "created_at": "2026-02-28T14:20:00Z"
+    },
+    {
+      "id": "proj_003",
+      "service_id": "serv_002",
+      "service_name": "Interior Design",
+      "service_slug": "interior",
+      "title": "Luxury Villa Interior",
+      "slug": "luxury-villa-interior",
+      "featured": true,
+      "short_description": "Modern gypsum ceiling and custom fittings for luxury villa",
+      "full_description": "Complete interior design for a luxury villa in Nyali, Mombasa. The project included modern gypsum ceiling installations, custom wall fittings, built-in entertainment units, and ambient lighting design. The result is a beautiful and functional living space.",
+      "location": {
+        "county": "Mombasa",
+        "area": "Nyali",
+        "exact": "Links Road",
+        "landmark": "Near Nyali Golf Club"
+      },
+      "dates": {
+        "start": "2026-01-05",
+        "end": "2026-01-20"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/interior1-1.jpg",
+          "thumbnail": "/static/uploads/projects/interior1-1-thumb.jpg",
+          "description": "Completed living room with gypsum ceiling",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/interior1-2.jpg",
+          "thumbnail": "/static/uploads/projects/interior1-2-thumb.jpg",
+          "description": "Custom wall fittings and entertainment unit",
+          "order": 2,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/interior1-3.jpg",
+          "thumbnail": "/static/uploads/projects/interior1-3-thumb.jpg",
+          "description": "Ambient lighting installation",
+          "order": 3,
+          "featured": false
+        }
+      ],
+      "interior_type": "Full Interior Design",
+      "material": "Gypsum Board, Premium Paint",
+      "room_area": "120",
+      "num_rooms": "5",
+      "property_type": "residential",
+      "client_name": "Dr. Ahmed Hassan",
+      "project_value": "KES 850,000",
+      "tags": ["interior", "gypsum", "luxury", "villa"],
+      "status": "completed",
+      "created_at": "2026-01-20T11:15:00Z"
+    },
+    {
+      "id": "proj_004",
+      "service_id": "serv_002",
+      "service_name": "Interior Design",
+      "service_slug": "interior",
+      "title": "Modern Office Partitions",
+      "slug": "modern-office-partitions",
+      "featured": true,
+      "short_description": "Gypsum partitions and suspended ceilings for corporate office",
+      "full_description": "Complete office interior transformation in Westlands, Nairobi. The project included gypsum wall partitions, suspended ceilings with acoustic treatment, and modern finishing. The result is a professional and productive workspace.",
+      "location": {
+        "county": "Nairobi",
+        "area": "Westlands",
+        "exact": "Chiromo Road",
+        "landmark": "Near Westlands Business Park"
+      },
+      "dates": {
+        "start": "2025-12-01",
+        "end": "2025-12-10"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/interior2-1.jpg",
+          "thumbnail": "/static/uploads/projects/interior2-1-thumb.jpg",
+          "description": "Completed office partitions",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/interior2-2.jpg",
+          "thumbnail": "/static/uploads/projects/interior2-2-thumb.jpg",
+          "description": "Suspended ceiling installation",
+          "order": 2,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/interior2-3.jpg",
+          "thumbnail": "/static/uploads/projects/interior2-3-thumb.jpg",
+          "description": "Acoustic treatment and finishing",
+          "order": 3,
+          "featured": false
+        }
+      ],
+      "interior_type": "Office Partitions",
+      "material": "Gypsum Board, Acoustic Tiles",
+      "room_area": "300",
+      "num_rooms": "8",
+      "property_type": "commercial",
+      "client_name": "Tech Solutions Ltd",
+      "project_value": "KES 650,000",
+      "tags": ["interior", "office", "partitions", "acoustic"],
+      "status": "completed",
+      "created_at": "2025-12-10T09:30:00Z"
+    },
+    {
+      "id": "proj_005",
+      "service_id": "serv_003",
+      "service_name": "Repairs",
+      "service_slug": "repairs",
+      "title": "Emergency Leak Repair",
+      "slug": "emergency-leak-repair",
+      "featured": true,
+      "short_description": "24-hour emergency response for severe roof leak",
+      "full_description": "Emergency repair service for a severe roof leak in Machakos Town. Our team responded within 2 hours, provided temporary patch to stop the leak, and completed permanent repair with new Box Profile sheets the next working day.",
+      "location": {
+        "county": "Machakos",
+        "area": "Machakos Town",
+        "exact": "Mombasa Road",
+        "landmark": "Near Machakos Bus Station"
+      },
+      "dates": {
+        "start": "2026-03-05",
+        "end": "2026-03-05"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/repair1-1.jpg",
+          "thumbnail": "/static/uploads/projects/repair1-1-thumb.jpg",
+          "description": "Before repair - Severe roof leak",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/repair1-2.jpg",
+          "thumbnail": "/static/uploads/projects/repair1-2-thumb.jpg",
+          "description": "During repair - Temporary patch applied",
+          "order": 2,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/repair1-3.jpg",
+          "thumbnail": "/static/uploads/projects/repair1-3-thumb.jpg",
+          "description": "After repair - New Box Profile sheets installed",
+          "order": 3,
+          "featured": false
+        }
+      ],
+      "problem_description": "Severe roof leak causing water damage to ceiling and walls. Water was entering through damaged Box Profile sheets and deteriorated flashing.",
+      "repair_type": "Emergency Repair",
+      "urgency": "Emergency (24h)",
+      "property_type": "commercial",
+      "client_name": "Machakos Hardware Store",
+      "project_value": "KES 45,000",
+      "tags": ["repairs", "emergency", "leak", "box profile"],
+      "status": "completed",
+      "created_at": "2026-03-05T16:20:00Z"
+    },
+    {
+      "id": "proj_006",
+      "service_id": "serv_003",
+      "service_name": "Repairs",
+      "service_slug": "repairs",
+      "title": "Water Damaged Ceiling",
+      "slug": "water-damaged-ceiling",
+      "featured": false,
+      "short_description": "Repair of water-damaged gypsum ceiling",
+      "full_description": "Repair of water-damaged gypsum ceiling in Kisumu CBD. The project involved removing damaged sections, treating for mold, and installing new gypsum ceiling panels. The work was completed within the scheduled maintenance window.",
+      "location": {
+        "county": "Kisumu",
+        "area": "Kisumu CBD",
+        "exact": "Oginga Odinga Street",
+        "landmark": "Near Kisumu Market"
+      },
+      "dates": {
+        "start": "2026-02-22",
+        "end": "2026-02-22"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/repair2-1.jpg",
+          "thumbnail": "/static/uploads/projects/repair2-1-thumb.jpg",
+          "description": "Water damaged ceiling - Before",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/repair2-2.jpg",
+          "thumbnail": "/static/uploads/projects/repair2-2-thumb.jpg",
+          "description": "Removal of damaged sections",
+          "order": 2,
+          "featured": false
+        },
+        {
+          "path": "/static/uploads/projects/repair2-3.jpg",
+          "thumbnail": "/static/uploads/projects/repair2-3-thumb.jpg",
+          "description": "New gypsum ceiling installed",
+          "order": 3,
+          "featured": false
+        }
+      ],
+      "problem_description": "Water damage from leaking roof above caused staining and sagging of gypsum ceiling panels. Mold was present in affected areas.",
+      "repair_type": "Routine Maintenance",
+      "urgency": "Normal (1 week)",
+      "property_type": "commercial",
+      "client_name": "Kisumu Retail Store",
+      "project_value": "KES 28,000",
+      "tags": ["repairs", "ceiling", "gypsum", "water damage"],
+      "status": "completed",
+      "created_at": "2026-02-22T14:10:00Z"
+    },
+    {
+      "id": "proj_007",
+      "service_id": "serv_004",
+      "service_name": "Quoting Service",
+      "service_slug": "quoting",
+      "title": "Shopping Mall Assessment",
+      "slug": "shopping-mall-assessment",
+      "featured": true,
+      "short_description": "Complete quotation for shopping mall roofing and interior design",
+      "full_description": "Professional assessment and detailed quotation for a shopping mall project in Nakuru CBD. The quote included roofing requirements, interior design specifications, material calculations, labor costs, and timeline projections for the entire project.",
+      "location": {
+        "county": "Nakuru",
+        "area": "Nakuru CBD",
+        "exact": "Kenyatta Avenue",
+        "landmark": "Near Nakuru Town Center"
+      },
+      "dates": {
+        "start": "2026-01-30",
+        "end": "2026-01-30"
+      },
+      "images": [
+        {
+          "path": "/static/uploads/projects/quoting1-1.jpg",
+          "thumbnail": "/static/uploads/projects/quoting1-1-thumb.jpg",
+          "description": "Site assessment for shopping mall project",
+          "order": 1,
+          "featured": true
+        },
+        {
+          "path": "/static/uploads/projects/quoting1-2.jpg",
+          "thumbnail": "/static/uploads/projects/quoting1-2-thumb.jpg",
+          "description": "Detailed quote documentation",
+          "order": 2,
+          "featured": false
+        }
+      ],
+      "services_for_quote": ["roofing", "interior"],
+      "project_scope": "Complete roofing replacement for 5,000 sqm shopping mall, including interior design for common areas, shops, and food court. Requires detailed material calculations and timeline projections.",
+      "property_type": "commercial",
+      "client_name": "Nakuru Mall Development Ltd",
+      "project_value": "KES 4,500,000 (estimated)",
+      "tags": ["quoting", "commercial", "mall", "assessment"],
+      "status": "completed",
+      "created_at": "2026-01-30T11:45:00Z"
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "inq_001",
+      "name": "James Mwangi",
+      "phone": "+254 712 345 678",
+      "email": "james.mwangi@email.com",
+      "service": "roofing",
+      "subject": "Urgent Roof Leak",
+      "message": "I have a leak in my roof that needs urgent attention. The water is coming through the ceiling in the living room. Can you send someone to assess and repair? Please call me as soon as possible.",
+      "location": {
+        "county": "Nairobi",
+        "area": "Kilimani"
+      },
+      "status": "unread",
+      "created_at": "2026-02-23T14:30:00Z",
+      "read_at": null,
+      "replied_at": null,
+      "assigned_to": null
+    },
+    {
+      "id": "inq_002",
+      "name": "Mary Atieno",
+      "phone": "+254 723 456 789",
+      "email": "mary.atieno@email.com",
+      "service": "repairs",
+      "subject": "Water Damaged Ceiling",
+      "message": "Our office ceiling has water damage from a leak. We need someone to assess and provide a quote for repairs. Please contact me to schedule a visit.",
+      "location": {
+        "county": "Kisumu",
+        "area": "CBD"
+      },
+      "status": "unread",
+      "created_at": "2026-02-23T09:15:00Z",
+      "read_at": null,
+      "replied_at": null,
+      "assigned_to": null
+    },
+    {
+      "id": "inq_003",
+      "name": "Alice Wanjiku",
+      "phone": "+254 734 567 890",
+      "email": "alice.wanjiku@email.com",
+      "service": "interior",
+      "subject": "Gypsum Ceiling Quote",
+      "message": "I would like a quote for installing gypsum ceiling in my living room and dining area. Total area approximately 50 square meters. Please provide options and pricing.",
+      "location": {
+        "county": "Kiambu",
+        "area": "Thika"
+      },
+      "status": "read",
+      "created_at": "2026-02-22T16:20:00Z",
+      "read_at": "2026-02-22T17:30:00Z",
+      "replied_at": null,
+      "assigned_to": "admin"
+    },
+    {
+      "id": "inq_004",
+      "name": "Peter Kariuki",
+      "phone": "+254 745 678 901",
+      "email": "peter.kariuki@email.com",
+      "service": "quoting",
+      "subject": "Commercial Building Quote",
+      "message": "We are planning to construct a commercial building in Machakos and need a detailed quote for roofing and interior design. Please contact me to discuss the project.",
+      "location": {
+        "county": "Machakos",
+        "area": "Town"
+      },
+      "status": "read",
+      "created_at": "2026-02-22T11:10:00Z",
+      "read_at": "2026-02-22T14:20:00Z",
+      "replied_at": null,
+      "assigned_to": "admin"
+    },
+    {
+      "id": "inq_005",
+      "name": "John Otieno",
+      "phone": "+254 756 789 012",
+      "email": "john.otieno@email.com",
+      "service": "roofing",
+      "subject": "New Roof Installation",
+      "message": "We are building a new home in Kajiado and need a quote for complete roof installation. The house is approximately 200 square meters. Please advise on material options and pricing.",
+      "location": {
+        "county": "Kajiado",
+        "area": "Kitengela"
+      },
+      "status": "replied",
+      "created_at": "2026-02-21T10:45:00Z",
+      "read_at": "2026-02-21T14:30:00Z",
+      "replied_at": "2026-02-22T09:15:00Z",
+      "assigned_to": "admin"
+    },
+    {
+      "id": "inq_006",
+      "name": "Susan Kamau",
+      "phone": "+254 767 890 123",
+      "email": "susan.kamau@email.com",
+      "service": "interior",
+      "subject": "Office Partitions",
+      "message": "We need to partition our office space in Mombasa. Looking for modern gypsum partitions for 6 offices. Please provide quote and timeline.",
+      "location": {
+        "county": "Mombasa",
+        "area": "Nyali"
+      },
+      "status": "replied",
+      "created_at": "2026-02-20T13:20:00Z",
+      "read_at": "2026-02-20T15:45:00Z",
+      "replied_at": "2026-02-21T10:30:00Z",
+      "assigned_to": "admin"
+    },
+    {
+      "id": "inq_007",
+      "name": "David Mwangi",
+      "phone": "+254 778 901 234",
+      "email": "david.mwangi@email.com",
+      "service": "repairs",
+      "subject": "Gutter Repair",
+      "message": "My gutters are damaged and need repair or replacement. Please advise.",
+      "location": {
+        "county": "Nakuru",
+        "area": "CBD"
+      },
+      "status": "archived",
+      "created_at": "2026-02-19T09:30:00Z",
+      "read_at": "2026-02-19T11:20:00Z",
+      "replied_at": "2026-02-19T15:40:00Z",
+      "archived_at": "2026-02-22T10:00:00Z",
+      "assigned_to": "admin"
+    },
+    {
+      "id": "inq_008",
+      "name": "Grace Achieng",
+      "phone": "+254 789 012 345",
+      "email": "grace.achieng@email.com",
+      "service": "general",
+      "subject": "General Inquiry",
+      "message": "I would like to know more about your services and whether you operate in Kisumu. Please send me information.",
+      "location": {
+        "county": "Kisumu",
+        "area": "CBD"
+      },
+      "status": "archived",
+      "created_at": "2026-02-18T08:15:00Z",
+      "read_at": "2026-02-18T10:30:00Z",
+      "replied_at": "2026-02-18T14:20:00Z",
+      "archived_at": "2026-02-21T16:00:00Z",
+      "assigned_to": "admin"
+    }
+  ],
+  "visits": {
+    "total": 2847,
+    "unique": 1932,
+    "monthly": {
+      "2025-09": 1560,
+      "2025-10": 1720,
+      "2025-11": 1890,
+      "2025-12": 2100,
+      "2026-01": 2350,
+      "2026-02": 2470
+    },
+    "daily": {
+      "2026-02-17": 398,
+      "2026-02-18": 423,
+      "2026-02-19": 512,
+      "2026-02-20": 387,
+      "2026-02-21": 589,
+      "2026-02-22": 645,
+      "2026-02-23": 534
+    },
+    "devices": {
+      "mobile": 1565,
+      "desktop": 1139,
+      "tablet": 143
+    },
+    "sources": {
+      "direct": 1281,
+      "google": 854,
+      "social": 427,
+      "referrals": 199,
+      "email": 86
+    },
+    "pages": {
+      "/": 1245,
+      "/projects": 892,
+      "/services": 654,
+      "/contact": 432,
+      "/profile": 321
+    },
+    "locations": {
+      "Nairobi": 1245,
+      "Kiambu": 432,
+      "Machakos": 298,
+      "Kajiado": 187,
+      "Mombasa": 145,
+      "Kisumu": 120,
+      "Nakuru": 98,
+      "Others": 322
+    },
+    "devices_tracking": {}
+  },
+  "settings": {
+    "admin_count": 0,
+    "max_admins": 2,
+    "site_name": "Tonnie Roofing",
+    "site_url": "https://tonnieroofing.co.ke",
+    "maintenance_mode": false,
+    "version": "1.0.0",
+    "last_backup": null,
+    "features": {
+      "dark_mode": true,
+      "hamburger_menu": true,
+      "image_gallery": true,
+      "county_dropdown": true,
+      "mabati_options": true,
+      "working_days_only": true
+    }
+  },
+  "mabati_options": [
+    "Dumu Zas - 28 Gauge",
+    "Dumu Zas - 26 Gauge",
+    "Dumu Zas - 30 Gauge",
+    "Versatile - 28 Gauge",
+    "Versatile - 26 Gauge",
+    "Box Profile - 0.3mm",
+    "Box Profile - 0.4mm",
+    "Box Profile - 0.5mm",
+    "Roman Tile - 28 Gauge",
+    "Roman Tile - 26 Gauge",
+    "Roman Tile - Color Coated",
+    "Corrugated GCI - 28 Gauge",
+    "Corrugated GCI - 26 Gauge",
+    "Corrugated GCI - 30 Gauge",
+    "Half Round Gutters - 0.45mm",
+    "Half Round Gutters - 0.5mm",
+    "Box Gutters - 0.5mm",
+    "Box Gutters - 0.6mm",
+    "Ridge Cap - Standard 150mm",
+    "Ridge Cap - Wide 200mm",
+    "Ridge Cap - Ventilated",
+    "Wall Flashing - 0.4mm",
+    "Barge Flashing - 0.4mm",
+    "Valley Flashing - 0.5mm",
+    "Insulated Panel - 25mm",
+    "Insulated Panel - 50mm",
+    "Insulated Panel - 75mm",
+    "Decra Tiles - Stone Coated",
+    "Color Bond - 28 Gauge",
+    "Color Bond - 26 Gauge",
+    "Galvalume - 28 Gauge",
+    "Galvalume - 26 Gauge"
+  ],
+  "kenyan_counties": [
+    "Baringo", "Bomet", "Bungoma", "Busia", "Elgeyo Marakwet", "Embu", "Garissa",
+    "Homa Bay", "Isiolo", "Kajiado", "Kakamega", "Kericho", "Kiambu", "Kilifi",
+    "Kirinyaga", "Kisii", "Kisumu", "Kitui", "Kwale", "Laikipia", "Lamu",
+    "Machakos", "Makueni", "Mandera", "Marsabit", "Meru", "Migori", "Mombasa",
+    "Murang'a", "Nairobi", "Nakuru", "Nandi", "Narok", "Nyamira", "Nyandarua",
+    "Nyeri", "Samburu", "Siaya", "Taita Taveta", "Tana River", "Tharaka Nithi",
+    "Trans Nzoia", "Turkana", "Uasin Gishu", "Vihiga", "Wajir", "West Pokot"
+  ]
+}
