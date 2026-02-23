@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Roof Installation - Tonnie Roofing</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #333333;
+            overflow: hidden;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Dark Theme - Improved visibility */
+        body.dark-theme {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .project-container,
+        body.dark-theme .details-card,
+        body.dark-theme .sidebar-card,
+        body.dark-theme .related-card {
+            background: #1e1e1e;
+            border-color: #333;
+        }
+        
+        body.dark-theme h1, 
+        body.dark-theme h2, 
+        body.dark-theme h3,
+        body.dark-theme h4 {
+            color: #ffffff;
+        }
+        
+        body.dark-theme p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .detail-label {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .detail-value {
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .breadcrumb a {
+            color: #b0b0b0;
+        }
+        
+        body.dark-theme .breadcrumb .current {
+            color: #d97706;
+        }
+        
+        /* No scrollbar */
+        body, html {
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .main-content {
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .main-content::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Header */
+        header {
+            height: 80px;
+            padding: 0 2rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+        
+        body.dark-theme header {
+            background: #1a1a1a;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d97706;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        
+        body.dark-theme .logo span {
+            color: #b0b0b0;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 101;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+        
+        body.dark-theme .hamburger span {
+            background: #e0e0e0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        body.dark-theme .nav-menu a {
+            color: #e0e0e0;
+        }
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #d97706;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        /* Tablet and Smartphone Styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                padding: 3rem 2rem;
+                transition: left 0.3s ease;
+                z-index: 99;
+                overflow-y: auto;
+            }
+            
+            body.dark-theme .nav-menu {
+                background: #1a1a1a;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .nav-menu a {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        
+        body.dark-theme .breadcrumb {
+            background: #1e1e1e;
+            border-bottom-color: #333;
+        }
+        
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a:hover {
+            color: #d97706;
+        }
+        
+        .breadcrumb span {
+            color: #999;
+            margin: 0 0.5rem;
+        }
+        
+        .breadcrumb .current {
+            color: #d97706;
+            font-weight: 500;
+        }
+        
+        /* Project Container */
+        .project-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin-bottom: 3rem;
+        }
+        
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(217, 119, 6, 0.8);
+        }
+        
+        .gallery-nav.prev {
+            left: 20px;
+        }
+        
+        .gallery-nav.next {
+            right: 20px;
+        }
+        
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+        
+        /* Thumbnails */
+        .thumbnails {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+        }
+        
+        .thumbnails::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .thumbnail {
+            width: 100px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+        
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #d97706;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Project Info Grid */
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Main Content */
+        .project-main {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-theme .project-main {
+            background: #1e1e1e;
+        }
+        
+        .project-category {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #d97706;
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        body.dark-theme .project-title {
+            color: #ffffff;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+        }
+        
+        body.dark-theme .meta-item {
+            color: #b0b0b0;
+        }
+        
+        .meta-item i {
+            color: #d97706;
+            font-size: 1.2rem;
+        }
+        
+        /* Details Card */
+        .details-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        body.dark-theme .details-card {
+            background: #2d2d2d;
+        }
+        
+        .details-card h3 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        body.dark-theme .details-card h3 {
+            color: #ffffff;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        body.dark-theme .detail-value {
+            color: #e0e0e0;
+        }
+        
+        .project-description {
+            line-height: 1.8;
+            color: #666;
+            margin: 2rem 0;
+        }
+        
+        body.dark-theme .project-description {
+            color: #b0b0b0;
+        }
+        
+        /* Materials List */
+        .materials-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .materials-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+        }
+        
+        body.dark-theme .materials-list li {
+            border-bottom-color: #444;
+            color: #b0b0b0;
+        }
+        
+        .materials-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .material-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        body.dark-theme .material-name {
+            color: #e0e0e0;
+        }
+        
+        .material-qty {
+            color: #d97706;
+        }
+        
+        /* Sidebar */
+        .project-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-theme .sidebar-card {
+            background: #1e1e1e;
+        }
+        
+        .sidebar-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        body.dark-theme .sidebar-title {
+            color: #ffffff;
+        }
+        
+        .location-details p {
+            margin-bottom: 0.8rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        body.dark-theme .location-details p {
+            color: #b0b0b0;
+        }
+        
+        .location-details strong {
+            color: #333;
+            width: 80px;
+        }
+        
+        body.dark-theme .location-details strong {
+            color: #e0e0e0;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            min-height: 48px;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: #d97706;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #b45f06;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 119, 6, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #d97706;
+            border-color: #d97706;
+        }
+        
+        .btn-outline:hover {
+            background: #d97706;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #666;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        body.dark-theme .share-btn {
+            background: #2d2d2d;
+            color: #b0b0b0;
+        }
+        
+        .share-btn:hover {
+            background: #d97706;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Related Projects */
+        .related-section {
+            margin-top: 4rem;
+        }
+        
+        .related-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        body.dark-theme .related-section h2 {
+            color: #ffffff;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .related-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        body.dark-theme .related-card {
+            background: #1e1e1e;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .related-image {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-info {
+            padding: 1rem;
+        }
+        
+        .related-info h4 {
+            margin-bottom: 0.3rem;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-theme .related-info h4 {
+            color: #ffffff;
+        }
+        
+        .related-info p {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        body.dark-theme .related-info p {
+            color: #b0b0b0;
+        }
+        
+        /* Fullscreen Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        
+        .modal-description {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 1rem;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: #d97706;
+            transform: rotate(90deg);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(217, 119, 6, 0.8);
+        }
+        
+        .modal-nav.prev {
+            left: 20px;
+        }
+        
+        .modal-nav.next {
+            right: 20px;
+        }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            z-index: 1001;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #d97706;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #b0b0b0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-image-container {
+                height: 350px;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .breadcrumb {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .project-title {
+                font-size: 1.8rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .main-image-container {
+                height: 250px;
+            }
+            
+            .thumbnails {
+                gap: 0.5rem;
+            }
+            
+            .thumbnail {
+                width: 70px;
+                height: 50px;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+            
+            .modal-description {
+                font-size: 0.85rem;
+                padding: 0.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/static/uploads/tonnie-logo.png" alt="Tonnie Roofing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <a href="/" style="display: none;">TONNIE<span>Roofing</span></a>
+        </div>
+        
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/projects" class="active">Projects</a></li>
+                <li><a href="/profile">Company</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+        </nav>
+    </header>
+    
+    <div class="main-content">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/projects">Projects</a>
+            <span>/</span>
+            <a href="/projects?type=roofing">Roofing</a>
+            <span>/</span>
+            <span class="current">Modern Roof Installation</span>
+        </div>
+        
+        <!-- Project Container -->
+        <div class="project-container">
+            <!-- Gallery Section -->
+            <div class="gallery-section">
+                <div class="main-image-container" onclick="openModal(0)">
+                    <img id="mainImage" class="main-image" src="/static/uploads/projects/roofing-nairobi-1.jpg" alt="Modern Roof Installation">
+                    
+                    <button class="gallery-nav prev" onclick="changeImage(-1); event.stopPropagation()">❮</button>
+                    <button class="gallery-nav next" onclick="changeImage(1); event.stopPropagation()">❯</button>
+                    
+                    <div class="image-counter" id="imageCounter">1 / 8</div>
+                </div>
+                
+                <div class="thumbnails" id="thumbnails">
+                    <div class="thumbnail active" onclick="setCurrentImage(0)">
+                        <img src="/static/uploads/projects/roofing-nairobi-1.jpg" alt="Thumbnail 1">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(1)">
+                        <img src="/static/uploads/projects/roofing-nairobi-2.jpg" alt="Thumbnail 2">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(2)">
+                        <img src="/static/uploads/projects/roofing-nairobi-3.jpg" alt="Thumbnail 3">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(3)">
+                        <img src="/static/uploads/projects/roofing-nairobi-4.jpg" alt="Thumbnail 4">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(4)">
+                        <img src="/static/uploads/projects/roofing-nairobi-5.jpg" alt="Thumbnail 5">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(5)">
+                        <img src="/static/uploads/projects/roofing-nairobi-6.jpg" alt="Thumbnail 6">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(6)">
+                        <img src="/static/uploads/projects/roofing-nairobi-7.jpg" alt="Thumbnail 7">
+                    </div>
+                    <div class="thumbnail" onclick="setCurrentImage(7)">
+                        <img src="/static/uploads/projects/roofing-nairobi-8.jpg" alt="Thumbnail 8">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Info Grid -->
+            <div class="project-info-grid">
+                <!-- Main Content -->
+                <div class="project-main">
+                    <span class="project-category">🏠 Roofing</span>
+                    <h1 class="project-title">Modern Roof Installation</h1>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i>📅</i>
+                            <span>Completed: March 15, 2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>📍</i>
+                            <span>Nairobi, Kilimani</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>🏠</i>
+                            <span>Residential</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Roofing Specific Details -->
+                    <div class="details-card">
+                        <h3>🏠 Roofing Details</h3>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Roof Type</span>
+                                <span class="detail-value">Pitched Roof</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Roofing Sheets</span>
+                                <span class="detail-value">Dumu Zas - 28 Gauge</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Start Date</span>
+                                <span class="detail-value">February 20, 2026</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">End Date</span>
+                                <span class="detail-value">March 15, 2026</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Advantage</span>
+                                <span class="detail-value">Durable, Weather-resistant</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Warranty</span>
+                                <span class="detail-value">25 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div class="details-card">
+                        <h3>📝 Project Description</h3>
+                        <p class="project-description">
+                            Complete roof replacement for a modern residential home in Kilimani, Nairobi. 
+                            The project involved removing the old, worn-out roofing material and installing 
+                            high-quality Dumu zas 28 gauge sheets. The new roof features improved insulation, 
+                            better ventilation, and enhanced aesthetic appeal.
+                        </p>
+                        <p class="project-description">
+                            Special attention was given to the roof's structural integrity, with reinforced 
+                            trusses and upgraded waterproofing membrane. The Dumu zas sheets provide excellent 
+                            durability and weather protection. The project was completed on schedule with 
+                            minimal disruption to the homeowners.
+                        </p>
+                    </div>
+                    
+                    <!-- Process Steps -->
+                    <div class="details-card">
+                        <h3>⚙️ Project Process</h3>
+                        <ol style="margin-left: 1.5rem; color: #666; line-height: 2;">
+                            <li>Site inspection and measurements</li>
+                            <li>Removal of old roofing material</li>
+                            <li>Structural reinforcement</li>
+                            <li>Waterproofing installation</li>
+                            <li>Dumu zas sheet installation</li>
+                            <li>Ridge capping and finishing</li>
+                            <li>Final inspection and cleanup</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="project-sidebar">
+                    <!-- Location Details -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">📍 Location Details</h3>
+                        <div class="location-details">
+                            <p>
+                                <strong>County:</strong> 
+                                <span>Nairobi</span>
+                            </p>
+                            <p>
+                                <strong>Area:</strong> 
+                                <span>Kilimani</span>
+                            </p>
+                            <p>
+                                <strong>Exact:</strong> 
+                                <span>Argwings Kodhek Road</span>
+                            </p>
+                            <p>
+                                <strong>Landmark:</strong> 
+                                <span>Near Kilimani Mall</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Materials Used -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">🧱 Materials Used</h3>
+                        <ul class="materials-list">
+                            <li>
+                                <span class="material-name">Dumu Zas 28 Gauge</span>
+                                <span class="material-qty">850 pcs</span>
+                            </li>
+                            <li>
+                                <span class="material-name">Waterproofing Membrane</span>
+                                <span class="material-qty">120 m²</span>
+                            </li>
+                            <li>
+                                <span class="material-name">Timber Trusses</span>
+                                <span class="material-qty">25 pcs</span>
+                            </li>
+                            <li>
+                                <span class="material-name">Ridge Caps</span>
+                                <span class="material-qty">40 pcs</span>
+                            </li>
+                            <li>
+                                <span class="material-name">Galvanized Nails</span>
+                                <span class="material-qty">5 kg</span>
+                            </li>
+                            <li>
+                                <span class="material-name">Gutters</span>
+                                <span class="material-qty">30 m</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">📋 Actions</h3>
+                        <div class="action-buttons">
+                            <a href="/contact?project=proj_001" class="btn btn-primary">
+                                <span>📞</span> Inquire About This Project
+                            </a>
+                            <a href="/contact?service=roofing&quote=1" class="btn btn-outline">
+                                <span>💰</span> Get Similar Quote
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Share -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">📱 Share</h3>
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn" onclick="shareOnFacebook(); return false;">📘</a>
+                            <a href="#" class="share-btn" onclick="shareOnTwitter(); return false;">🐦</a>
+                            <a href="#" class="share-btn" onclick="shareOnWhatsApp(); return false;">💬</a>
+                            <a href="#" class="share-btn" onclick="shareByEmail(); return false;">✉️</a>
+                            <a href="#" class="share-btn" onclick="copyLink(); return false;">🔗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Projects -->
+            <div class="related-section">
+                <h2>Similar Projects</h2>
+                <div class="related-grid">
+                    <div class="related-card" onclick="viewProject('proj_002')">
+                        <div class="related-image">
+                            <img src="/static/uploads/projects/roofing-kiambu-1.jpg" alt="Commercial Complex">
+                        </div>
+                        <div class="related-info">
+                            <h4>Commercial Complex Roofing</h4>
+                            <p>📍 Kiambu, Thika</p>
+                        </div>
+                    </div>
+                    
+                    <div class="related-card" onclick="viewProject('proj_008')">
+                        <div class="related-image">
+                            <img src="/static/uploads/projects/roofing-kajiado-1.jpg" alt="Luxury Villa">
+                        </div>
+                        <div class="related-info">
+                            <h4>Luxury Villa Roof</h4>
+                            <p>📍 Kajiado, Kitengela</p>
+                        </div>
+                    </div>
+                    
+                    <div class="related-card" onclick="viewProject('proj_003')">
+                        <div class="related-image">
+                            <img src="/static/uploads/projects/interior-mombasa-1.jpg" alt="Luxury Villa Interior">
+                        </div>
+                        <div class="related-info">
+                            <h4>Luxury Villa Interior</h4>
+                            <p>📍 Mombasa, Nyali</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TONNIE Roofing</h3>
+                    <p>Professional roofing, interior design, and repair services. Quality craftsmanship you can trust since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="#" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="#" target="_blank" aria-label="Twitter">🐦</a>
+                        <a href="#" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="/">Home</a>
+                    <a href="/services">Services</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/profile">About Us</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <a href="/services#roofing">Roofing</a>
+                    <a href="/services#interior">Interior Design</a>
+                    <a href="/services#repairs">Repairs</a>
+                    <a href="/services#quoting">Quoting Service</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📞 +254 700 000 000</p>
+                    <p>✉️ info@tonnieroofing.co.ke</p>
+                    <p>📍 Nairobi, Kenya</p>
+                    <p>⏰ Mon-Fri: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tonnie Roofing. All rights reserved. | Professional Services in Kenya</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Fullscreen Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <div id="modalDescription" class="modal-description"></div>
+            
+            <button class="modal-nav prev" onclick="modalChangeImage(-1)">❮</button>
+            <button class="modal-nav next" onclick="modalChangeImage(1)">❯</button>
+            
+            <div id="modalCounter" class="modal-counter">1 / 8</div>
+        </div>
+    </div>
+    
+    <script>
+        // Image data with descriptions
+        const images = [
+            {
+                src: "/static/uploads/projects/roofing-nairobi-1.jpg",
+                description: "Completed roof installation with Dumu zas 28 gauge sheets"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-2.jpg",
+                description: "Removal of old roofing material - Day 1"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-3.jpg",
+                description: "Structural reinforcement and new trusses installation"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-4.jpg",
+                description: "Waterproofing membrane application"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-5.jpg",
+                description: "Dumu zas sheet installation in progress"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-6.jpg",
+                description: "Ridge capping and finishing details"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-7.jpg",
+                description: "Completed roof - Front view showing modern design"
+            },
+            {
+                src: "/static/uploads/projects/roofing-nairobi-8.jpg",
+                description: "Gutter installation and final touches"
+            }
+        ];
+        
+        let currentIndex = 0;
+        
+        // Hamburger menu toggle
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.getElementById('navMenu');
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+        
+        // Theme toggle
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-theme')) {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const navMenu = document.getElementById('navMenu');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (navMenu && hamburger && !navMenu.contains(event.target) && !hamburger.contains(event.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+        
+        // Gallery Functions
+        function setCurrentImage(index) {
+            currentIndex = index;
+            document.getElementById('mainImage').src = images[index].src;
+            document.getElementById('imageCounter').textContent = `${index + 1} / ${images.length}`;
+            
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+        
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            setCurrentImage(currentIndex);
+        }
+        
+        // Modal Functions
+        function openModal(index) {
+            currentIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalDesc = document.getElementById('modalDescription');
+            const modalCounter = document.getElementById('modalCounter');
+            
+            modalImg.src = images[currentIndex].src;
+            modalDesc.textContent = images[currentIndex].description;
+            modalCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function modalChangeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            
+            document.getElementById('modalImage').src = images[currentIndex].src;
+            document.getElementById('modalDescription').textContent = images[currentIndex].description;
+            document.getElementById('modalCounter').textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            
+            if (modal.classList.contains('show')) {
+                if (e.key === 'ArrowLeft') {
+                    modalChangeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    modalChangeImage(1);
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+        });
+        
+        // View project
+        function viewProject(id) {
+            window.location.href = '/project?id=' + id;
+        }
+        
+        // Share functions
+        function shareOnFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
+        }
+        
+        function shareOnTwitter() {
+            window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=Check out this project from Tonnie Roofing');
+        }
+        
+        function shareOnWhatsApp() {
+            window.open('https://wa.me/?text=' + encodeURIComponent('Check out this project from Tonnie Roofing: ' + window.location.href));
+        }
+        
+        function shareByEmail() {
+            window.location.href = 'mailto:?subject=Project from Tonnie Roofing&body=Check out this project: ' + encodeURIComponent(window.location.href);
+        }
+        
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
